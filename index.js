@@ -25,7 +25,10 @@ class CountdownTimer {
   }
   start() {
     let showTime = this.targetDate - Date.now();
-    this.doTimer(displayTime);
+    if (showTime <= 0) {
+      return;
+    }
+    this.doTimer(showTime);
     let stopInterval = setTimeout(() => {
       this.start();
     }, 1000);
